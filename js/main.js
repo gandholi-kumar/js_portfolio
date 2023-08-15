@@ -1,4 +1,4 @@
-/* Menu show/hide */
+/* ************** Menu show/hide ************** */
 const showMenu = (toggleId, navId) => {
   const toggle = document.getElementById(toggleId),
     nav = document.getElementById(navId);
@@ -12,7 +12,7 @@ const showMenu = (toggleId, navId) => {
 showMenu("nav-toggle", "nav-menu");
 showMenu("nav-close", "nav-menu");
 
-/* Menu hide on section click */
+/* ************** Menu hide on section click ************** */
 const navLink = document.querySelectorAll(".nav__link");
 const linkAction = () => {
   const navMenu = document.getElementById("nav-menu");
@@ -21,9 +21,9 @@ const linkAction = () => {
 
 navLink.forEach((nav) => nav.addEventListener("click", linkAction));
 
-/* ACCORDION SKILLS */
+/* ************** ACCORDION SKILLS ************** */
 const skillsHeader = document.querySelectorAll(".skills__header"),
- skillsContent = document.getElementsByClassName("skills__content");
+  skillsContent = document.getElementsByClassName("skills__content");
 
 function toggleSkills() {
   let itemClass = this.parentNode.className;
@@ -66,3 +66,22 @@ skillsHeader.forEach((el) => {
   el.addEventListener("click", toggleSkills.call(el));
 });
 */
+
+/* ************** QUALIFICATION TABS ************** */
+const tabs = document.querySelectorAll("[data-target]"),
+  tabContents = document.querySelectorAll("[data-content]");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = document.querySelector(tab.dataset.target);
+    tabContents.forEach((tabContent) => {
+      tabContent.classList.remove("qualification__active");
+    });
+    target.classList.add("qualification__active");
+
+    tabs.forEach((tabVal) => {
+      tabVal.classList.remove("qualification__active");
+    });
+    tab.classList.add("qualification__active");
+  });
+});
