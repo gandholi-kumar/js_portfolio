@@ -21,5 +21,48 @@ const linkAction = () => {
 
 navLink.forEach((nav) => nav.addEventListener("click", linkAction));
 
-/* Menu show Y hidden  */
-/* Menu show Y hidden  */
+/* ACCORDION SKILLS */
+const skillsHeader = document.querySelectorAll(".skills__header"),
+ skillsContent = document.getElementsByClassName("skills__content");
+
+function toggleSkills() {
+  let itemClass = this.parentNode.className;
+  console.log("itemClass: ", itemClass);
+
+  for (i = 0; i < skillsContent.length; i++) {
+    skillsContent[i].className = "skills__content skills__close";
+  }
+
+  if (itemClass === "skills__content skills__close") {
+    this.parentNode.className = "skills__content skills__open";
+  }
+}
+
+skillsHeader.forEach((el) => {
+  el.addEventListener("click", toggleSkills);
+});
+
+/*
+// working code using call method
+
+const skillsHeader = document.querySelectorAll(".skills__header");
+function toggleSkills() {
+  const skillsContent = document.getElementsByClassName("skills__content");
+  return () => {
+    let itemClass = this.parentNode.className;
+    console.log("itemClass: ", itemClass);
+
+    for (i = 0; i < skillsContent.length; i++) {
+      skillsContent[i].className = "skills__content skills__close";
+    }
+
+    if (itemClass === "skills__content skills__close") {
+      this.parentNode.className = "skills__content skills__open";
+    }
+  };
+}
+
+skillsHeader.forEach((el) => {
+  el.addEventListener("click", toggleSkills.call(el));
+});
+*/
