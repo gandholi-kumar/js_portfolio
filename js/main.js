@@ -27,7 +27,6 @@ const skillsHeader = document.querySelectorAll(".skills__header"),
 
 function toggleSkills() {
   let itemClass = this.parentNode.className;
-  console.log("itemClass: ", itemClass);
 
   for (i = 0; i < skillsContent.length; i++) {
     skillsContent[i].className = "skills__content skills__close";
@@ -36,6 +35,12 @@ function toggleSkills() {
   if (itemClass === "skills__content skills__close") {
     this.parentNode.className = "skills__content skills__open";
   }
+
+  // if (itemClass === "skills__content skills__open") {
+  //   this.parentNode.className = "skills__content skills__close";
+  // } else if (itemClass === "skills__content skills__close") {
+  //   this.parentNode.className = "skills__content skills__open";
+  // }
 }
 
 skillsHeader.forEach((el) => {
@@ -85,3 +90,30 @@ tabs.forEach((tab) => {
     tab.classList.add("qualification__active");
   });
 });
+
+/* ************** Services Modal ************** */
+const modalView = document.querySelectorAll(".services__modal"),
+  modalBtns = document.querySelectorAll(".servies__button"),
+  modalClose = document.querySelectorAll(".services__modal-close");
+
+const showModal = function(modalClick) {
+  modalView[modalClick].classList.add("active-modal");
+};
+
+modalBtns.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    showModal(i);
+  });
+});
+
+const closeModal = function(modalClick) {
+  modalView[modalClick].classList.remove("active-modal");
+};
+
+modalClose.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    closeModal(i);
+  });
+});
+
+
